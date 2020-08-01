@@ -8,6 +8,7 @@ def app_driver():
         'appPackage': 'cn.missfresh.application',
         'appActivity': 'cn.missfresh.module.base.main.view.SplashActivity',
         'newCommandTimeout': 600,
+        'automationName': 'Uiautomator2',
         'noReset': True,
         'unicodeKeyboard': True,
         'resetKeyboard': True

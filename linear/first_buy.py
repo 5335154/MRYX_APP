@@ -42,6 +42,7 @@ driver.swipe(size['width']*0.2,100,size['width']*0.8,100)  #向右滑
 #点击时令水果
 locator = driver.find_element(By.ID,'cn.missfresh.application:id/tab_layout')
 locator.find_element(By.XPATH,'//android.widget.TextView[2]').click()
+driver.save_screenshot('../screenshot/时令水果.png')
 
 #点击第二个商品的“+”
 locator = driver.find_element(By.ID,'cn.missfresh.application:id/recycler_view')
@@ -49,6 +50,7 @@ locator.find_element(By.XPATH,'//android.widget.RelativeLayout[2]/android.widget
 
 #同时点击1、2、3的“+”
 driver.tap([(241,370),(508,370),(241,647)],500)
+driver.save_screenshot('../screenshot/添加购物车.png')
 
 #查看第四个商品的详情
 locator = driver.find_element(By.ID,'cn.missfresh.application:id/recycler_view')
@@ -57,6 +59,7 @@ locator.find_element(By.XPATH,'//android.widget.RelativeLayout[4]/android.widget
 #加入购物车
 locator = driver.find_element(By.ID,'cn.missfresh.application:id/rc_ll_btns') #找到父级
 locator.find_element(By.XPATH,'//android.widget.TextView[1]').click()
+driver.save_screenshot('../screenshot/加入购物车(数量).png')
 
 #立即购买
 locator = driver.find_element(By.ID,'cn.missfresh.application:id/rc_ll_btns') #找到父级

@@ -1,10 +1,9 @@
 import time
-
 from selenium.webdriver.common.by import By
 
 
 class Shopping_CartPage():
-    '''购物车改-查-删'''
+    '''购物车页面'''
     def __init__(self, driver):
         self.driver = driver
         # 定位
@@ -30,16 +29,16 @@ class Shopping_CartPage():
         time.sleep(2)
         self.driver.find_element(*self.loc_add_goods_two).click()
 
-    def ele_assert(self):
+    def ele_assert(self):  #断言
         result = self.driver.find_element(*self.loc_assert_add).get_attribute('clickable')
         return result
 
-    def ele_add_number(self):   # 增加数量5个
-        for i in range(5):
+    def ele_add_number(self,add_num):   # 增加数量5个
+        for i in range(add_num):
             self.driver.find_element(*self.loc_add_number).click()
 
-    def ele_reduce(self):   # 减少数量3个
-        for m in range(3):
+    def ele_reduce(self,reduce_num):   # 减少数量3个
+        for m in range(reduce_num):
             self.driver.find_element(*self.loc_reduce_number).click()
 
     def ele_view_details(self):  # 查看详情
@@ -63,12 +62,21 @@ class Shopping_CartPage():
         self.driver.find_element(*self.loc_delete_yes).click() #确定
         self.driver.save_screenshot('../screenshot/删除.png')
 
-    def shopping_cart(self):
+    def add_goods(self):
+        '''猜你喜欢，加入购物车'''
         self.ele_shopping_cart()
         self.ele_add_goods()
         result = self.ele_assert()
-        self.ele_add_number()
-        self.ele_reduce()
+        return result
+
+
+    def shopping_cart(self,add_num,reduce_num):
+        '''购物车改-查-删'''
+        self.ele_shopping_cart()
+        self.ele_add_goods()
+        result = self.ele_assert()
+        self.ele_add_number(add_num)  #增加数量
+        self.ele_reduce(reduce_num)   #减少数量
         self.ele_view_details()
         self.ele_back()
         self.ele_deselect()
